@@ -1,0 +1,98 @@
+$alias SlotMachine/WinRegular skeleton/sight
+SlotMachine/WinJackpot SLOTJPT1
+
+SlotMachine/Rolling SLOTSPIN
+SlotMachine/Stop SLOTSTOP
+
+Merchant/BuyFailure BUYFAIL
+Merchant/BuySuccess BUYSUCC
+
+ResidentEvil/Buying1 "Sounds/ResidentEvil/Start1.ogg"
+ResidentEvil/Buying2 "Sounds/ResidentEvil/Start2.ogg"
+ResidentEvil/Buying3 "Sounds/ResidentEvil/Start3.ogg"
+ResidentEvil/Buying4 "Sounds/ResidentEvil/Start4.ogg"
+ResidentEvil/Buying5 "Sounds/ResidentEvil/Start5.ogg"
+$random ResidentEvil/Buying
+{
+	ResidentEvil/Buying1
+	ResidentEvil/Buying2
+	ResidentEvil/Buying3
+	ResidentEvil/Buying4
+	ResidentEvil/Buying5
+}
+
+ResidentEvil/GoAway1 "Sounds/ResidentEvil/End1.ogg"
+ResidentEvil/GoAway2 "Sounds/ResidentEvil/End2.ogg"
+ResidentEvil/GoAway3 "Sounds/ResidentEvil/End3.ogg"
+ResidentEvil/GoAway4 "Sounds/ResidentEvil/End4.ogg"
+$random ResidentEvil/GoAway
+{
+	ResidentEvil/GoAway1
+	ResidentEvil/GoAway2
+	ResidentEvil/GoAway3
+	ResidentEvil/GoAway4
+}
+
+Morshu/Buying "Sounds/Morshu/Start.ogg"
+Morshu/GoAway "Sounds/Morshu/End.ogg"
+
+Succubus/Buying "Sounds/Succubus/Start.wav"
+Succubus/GoAway "Sounds/Succubus/End.wav"
+Succubus/Wings "Sounds/Succubus/Wings.wav"
+
+Daina/Default/Buying "Sounds/Daina/DefaultStart.ogg"
+Daina/Default/GoAway "Sounds/Daina/DefaultEnd.ogg"
+Daina/Bunny/Buying "Sounds/Daina/BunnyStart.ogg"
+Daina/Bunny/GoAway "Sounds/Daina/BunnyEnd.ogg"
+Daina/Maid/Buying "Sounds/Daina/MaidStart.ogg"
+Daina/Maid/GoAway "Sounds/Daina/MaidEnd.wav"
+Daina/Labcoat/Buying "Sounds/Daina/LabcoatStart.ogg"
+Daina/Labcoat/GoAway "Sounds/Daina/LabcoatEnd.ogg"
+
+Nari/Succubus/Buying "Sounds/Nari/SuccubusStart.ogg"
+Nari/Succubus/GoAway "Sounds/Nari/SuccubusEnd.ogg"
+
+WanderingTrader/Buying1 "Sounds/WanderingTrader/Start1.ogg"
+WanderingTrader/Buying2 "Sounds/WanderingTrader/Start2.ogg"
+WanderingTrader/Buying3 "Sounds/WanderingTrader/Start3.ogg"
+WanderingTrader/Buying4 "Sounds/WanderingTrader/Start4.ogg"
+WanderingTrader/Buying5 "Sounds/WanderingTrader/Start5.ogg"
+$random WanderingTrader/Buying
+{
+	WanderingTrader/Buying1
+	WanderingTrader/Buying2
+	WanderingTrader/Buying3
+	WanderingTrader/Buying4
+	WanderingTrader/Buying5
+}
+
+WanderingTrader/GoAway1 "Sounds/WanderingTrader/End1.ogg"
+WanderingTrader/GoAway2 "Sounds/WanderingTrader/End2.ogg"
+WanderingTrader/GoAway3 "Sounds/WanderingTrader/End3.ogg"
+$random WanderingTrader/GoAway
+{
+	WanderingTrader/GoAway1
+	WanderingTrader/GoAway2
+	WanderingTrader/GoAway3
+}
+
+// ------------------------------------------------------------
+// POKER STUFF
+// ------------------------------------------------------------
+Poker/BetChip BETCHIP
+Poker/Check PLRCHECK
+
+Poker/DealCard CRDDEAL
+
+Poker/DeckShuffle1 DCKSHFL1
+Poker/DeckShuffle2 DCKSHFL2
+Poker/DeckShuffle3 DCKSHFL3
+Poker/DeckShuffle4 DCKSHFL4
+
+$random Poker/DeckShuffle
+{
+	Poker/DeckShuffle1
+	Poker/DeckShuffle2
+	Poker/DeckShuffle3
+	Poker/DeckShuffle4
+}

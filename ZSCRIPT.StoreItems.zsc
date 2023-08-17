@@ -1,0 +1,120 @@
+#include "ZSCRIPT.StoreItems.Vanilla.zsc"
+#include "ZSCRIPT.StoreItems.BulletLib.zsc"
+#include "ZSCRIPT.StoreItems.AceCorp.zsc"
+#include "ZSCRIPT.StoreItems.Icarus.zsc"
+#include "ZSCRIPT.StoreItems.Peppergrinder.zsc"
+#include "ZSCRIPT.StoreItems.HoagieTech.zsc"
+#include "ZSCRIPT.StoreItems.Melonades.zsc"
+#include "ZSCRIPT.StoreItems.UaS.zsc"
+#include "ZSCRIPT.StoreItems.HexaDoken.zsc"
+#include "ZSCRIPT.StoreItems.DeusDoom.zsc"
+#include "ZSCRIPT.StoreItems.Bryan.zsc"
+#include "ZSCRIPT.StoreItems.Dastrukar.zsc"
+
+class StoreCurrency abstract
+{
+	abstract string GetCurrencyClass();
+	abstract string GetIcon();
+	virtual double GetPriceMult() { return 1.0; }
+}
+
+class BucksCurrency : StoreCurrency
+{
+	override string GetCurrencyClass() { return "MercenaryBucks"; }
+	override string GetIcon() { return "MBCKA0"; }
+}
+
+class SevenMilCurrency : StoreCurrency
+{
+	override string GetCurrencyClass() { return "SevenMilAmmo"; }
+	override string GetIcon() { return "TEN7A0"; }
+}
+
+class SevenMilBrassCurrency : StoreCurrency
+{
+	override string GetCurrencyClass() { return "SevenMilBrass"; }
+	override string GetIcon() { return "RBRSA3A7"; }
+	override double GetPriceMult() { return 2.0; }
+}
+
+class MeloStoneCurrency : StoreCurrency
+{
+	override string GetCurrencyClass() { return "HDStoneGrenadeAmmo"; }
+	override string GetIcon() { return "STNEA0"; }
+	override double GetPriceMult() { return 0.1; }
+}
+
+class StoreItem abstract
+{
+	enum ItemType
+	{
+		SType_Weapon,
+		SType_Ammo,
+		SType_Item
+	}
+
+	// --------------------------------------------------
+	// STATIC
+	// --------------------------------------------------
+
+	static int GetAdjustedPrice(StoreItem item, StoreCurrency currency)
+	{
+		return int(max(ceil(Item.GetBasePrice() * Currency.GetPriceMult()), 1));
+	}
+
+	// --------------------------------------------------
+	// VIRTUALS
+	// --------------------------------------------------
+
+	protected abstract int GetBasePrice(); // [Ace] The base price is for merc bucks.
+	abstract string GetCategory();
+	abstract string GetDisplayName();
+	abstract string GetIcon();
+	abstract Name GetItem();
+	abstract int GetType();
+
+	virtual int GetAmount() { return 1; }
+	virtual string GetFlavorText() { return ""; }
+	virtual int GetStoreAmount()
+	{
+		switch (GetType())
+		{
+			case SType_Weapon:
+			{
+				return randompick[merchrand](1, 1, 1, 1, 1, 1, 1, 2);
+			}
+			case SType_Ammo:
+			{
+				if (GetAmount() == 1)
+				{
+					return random[merchrand](1, 5) * hdm_stock_ammo;
+				}
+				return randompick[merchrand](1, 2, 3, 3, random[merchrand](2, 6)) * hdm_stock_ammo;
+			}
+			case SType_Item:
+			{
+				if (GetBasePrice() <= 15)
+				{
+					return randompick[merchrand](1, 2, 2, 3, 3, 3, random[merchrand](4, 7)) * hdm_stock_item;
+				}
+				if (GetBasePrice() <= 40)
+				{
+					return randompick[merchrand](1, 1, 2, 2, 2, 3, 3, 4, 4, 5) * hdm_stock_item;
+				}
+				if (GetBasePrice() <= 80)
+				{
+					return randompick[merchrand](1, 1, 1, 2, 2, 2, 3, 3) * hdm_stock_item;
+				}
+				return 1;
+			}
+		}
+
+		return 666;
+	}
+	
+	// --------------------------------------------------
+	// VARIABLES
+	// --------------------------------------------------
+
+	int StoreAmount;
+}
